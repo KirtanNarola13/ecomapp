@@ -1,3 +1,4 @@
+import 'package:ecom_app/utils/globle.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -24,11 +25,12 @@ class _MyShopState extends State<MyShop> {
         elevation: 0,
         actions: [
           IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.shopping_cart,
-                color: Colors.black,
-              ))
+            onPressed: () {},
+            icon: const Icon(
+              Icons.shopping_cart,
+              color: Colors.black,
+            ),
+          ),
         ],
         centerTitle: true,
         backgroundColor: Colors.white,
@@ -53,6 +55,7 @@ class _MyShopState extends State<MyShop> {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Container(
+                      margin: EdgeInsets.only(bottom: 10),
                       decoration: const BoxDecoration(
                         border: Border(
                           bottom: BorderSide(
@@ -77,77 +80,128 @@ class _MyShopState extends State<MyShop> {
                             Icon(
                               Icons.arrow_drop_down,
                               color: Colors.grey,
-                            ),
+                            )
                           ],
                         ),
                       ),
                     ),
                   ),
                 ),
-                Expanded(
-                  flex: 9,
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: Container(
-                      height: 400,
-                      child: Align(
-                        alignment: Alignment.centerLeft,
+                Container(
+                  child: Expanded(
+                    flex: 9,
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
                         child: Column(
-                          children: [
-                            Expanded(
-                              flex: 1,
+                          children: allProducts.map((e) {
+                            List Data = e['catagoryProducts'];
+                            return Container(
+                              height: 500,
                               child: Align(
                                 alignment: Alignment.topLeft,
-                                child: Container(
-                                  height: 50,
-                                  child: const Text(
-                                    "Shirt",
-                                    style: TextStyle(
-                                        fontSize: 29,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 9,
-                              child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: Row(
+                                child: Column(
                                   children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.yellow,
-                                        borderRadius: BorderRadius.circular(20),
+                                    Expanded(
+                                      flex: 1,
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Container(
+                                          height: 50,
+                                          child: Text(
+                                            "${e['catagory']}",
+                                            style: const TextStyle(
+                                                fontSize: 29,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
                                       ),
-                                      width: 250,
                                     ),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.yellow,
-                                        borderRadius: BorderRadius.circular(20),
+                                    Expanded(
+                                      flex: 6,
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: SingleChildScrollView(
+                                          scrollDirection: Axis.horizontal,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              ...Data.map(
+                                                (e) {
+                                                  return Container(
+                                                    margin:
+                                                        const EdgeInsets.only(
+                                                      right: 20,
+                                                      bottom: 20,
+                                                    ),
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.grey,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                        20,
+                                                      ),
+                                                    ),
+                                                    width: 250,
+                                                    child: Column(
+                                                      children: [
+                                                        Expanded(
+                                                          child: Container(
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .only(
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        15),
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        15),
+                                                              ),
+                                                              color:
+                                                                  Colors.blue,
+                                                            ),
+                                                          ),
+                                                          flex: 6,
+                                                        ),
+                                                        Expanded(
+                                                          child: Container(
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: Colors
+                                                                  .white38,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .only(
+                                                                bottomLeft: Radius
+                                                                    .circular(
+                                                                        15),
+                                                                bottomRight:
+                                                                    Radius
+                                                                        .circular(
+                                                                            15),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          flex: 4,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  );
+                                                },
+                                              ),
+                                            ],
+                                          ),
+                                        ),
                                       ),
-                                      width: 250,
-                                    ),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.yellow,
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      width: 250,
-                                    ),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.yellow,
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      width: 250,
                                     ),
                                   ],
                                 ),
                               ),
-                            ),
-                          ],
+                            );
+                          }).toList(),
                         ),
                       ),
                     ),

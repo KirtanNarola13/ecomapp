@@ -73,9 +73,10 @@ class _MyShopState extends State<MyShop> {
                             Text(
                               "Select category...",
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                  color: Colors.grey),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                                color: Colors.grey,
+                              ),
                             ),
                             Icon(
                               Icons.arrow_drop_down,
@@ -98,7 +99,7 @@ class _MyShopState extends State<MyShop> {
                           children: allProducts.map((e) {
                             List Data = e['catagoryProducts'];
                             return Container(
-                              height: 500,
+                              height: 470,
                               child: Align(
                                 alignment: Alignment.topLeft,
                                 child: Column(
@@ -112,14 +113,15 @@ class _MyShopState extends State<MyShop> {
                                           child: Text(
                                             "${e['catagory']}",
                                             style: const TextStyle(
-                                                fontSize: 29,
-                                                fontWeight: FontWeight.bold),
+                                              fontSize: 29,
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
                                     Expanded(
-                                      flex: 6,
+                                      flex: 7,
                                       child: Align(
                                         alignment: Alignment.topLeft,
                                         child: SingleChildScrollView(
@@ -137,13 +139,18 @@ class _MyShopState extends State<MyShop> {
                                                       bottom: 20,
                                                     ),
                                                     decoration: BoxDecoration(
-                                                      color: Colors.grey,
+                                                      boxShadow: const <BoxShadow>[
+                                                        BoxShadow(
+                                                          color: Colors.grey,
+                                                          offset: Offset(3, 3),
+                                                        ),
+                                                      ],
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                         20,
                                                       ),
                                                     ),
-                                                    width: 250,
+                                                    width: 230,
                                                     child: Column(
                                                       children: [
                                                         Expanded(
@@ -161,17 +168,89 @@ class _MyShopState extends State<MyShop> {
                                                                         15),
                                                               ),
                                                               color:
-                                                                  Colors.blue,
+                                                                  Colors.white,
+                                                            ),
+                                                            child: Align(
+                                                              child: Column(
+                                                                children: [
+                                                                  Align(
+                                                                    alignment:
+                                                                        Alignment
+                                                                            .topLeft,
+                                                                    child:
+                                                                        Container(
+                                                                      child:
+                                                                          Align(
+                                                                        alignment:
+                                                                            Alignment.center,
+                                                                        child:
+                                                                            Text(
+                                                                          "${e['disscount']} %",
+                                                                          style:
+                                                                              const TextStyle(
+                                                                            color:
+                                                                                Colors.white,
+                                                                            fontSize:
+                                                                                18,
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      height:
+                                                                          40,
+                                                                      width: 70,
+                                                                      decoration:
+                                                                          const BoxDecoration(
+                                                                        color: Colors
+                                                                            .red,
+                                                                        borderRadius:
+                                                                            BorderRadius.only(
+                                                                          topLeft:
+                                                                              Radius.circular(20),
+                                                                          bottomRight:
+                                                                              Radius.circular(14),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  Align(
+                                                                    alignment:
+                                                                        Alignment
+                                                                            .center,
+                                                                    child:
+                                                                        Container(
+                                                                      child:
+                                                                          Align(
+                                                                        alignment:
+                                                                            Alignment.center,
+                                                                        child:
+                                                                            Text(
+                                                                          "${e['id']}",
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontSize:
+                                                                                40,
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
                                                             ),
                                                           ),
                                                           flex: 6,
                                                         ),
                                                         Expanded(
                                                           child: Container(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(8),
                                                             decoration:
                                                                 BoxDecoration(
-                                                              color: Colors
-                                                                  .white38,
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .only(
@@ -183,9 +262,56 @@ class _MyShopState extends State<MyShop> {
                                                                         .circular(
                                                                             15),
                                                               ),
+                                                              color:
+                                                                  Colors.white,
+                                                            ),
+                                                            child: Align(
+                                                              child: Column(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceBetween,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Text(
+                                                                    "${e['name']}",
+                                                                    style:
+                                                                        const TextStyle(
+                                                                      fontSize:
+                                                                          16,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                    ),
+                                                                  ),
+                                                                  Text(
+                                                                    "Rs. ${e['price']}",
+                                                                    style:
+                                                                        const TextStyle(
+                                                                      fontSize:
+                                                                          18,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                    ),
+                                                                  ),
+                                                                  Text(
+                                                                    "${e['rating']}",
+                                                                    style:
+                                                                        const TextStyle(
+                                                                      fontSize:
+                                                                          16,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
                                                             ),
                                                           ),
-                                                          flex: 4,
+                                                          flex: 3,
                                                         ),
                                                       ],
                                                     ),

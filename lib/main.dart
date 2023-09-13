@@ -1,5 +1,6 @@
 import 'package:ecom_app/utils/globle.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 void main() {
   runApp(
@@ -101,7 +102,7 @@ class _MyShopState extends State<MyShop> {
                       children: allProducts.map((e) {
                         List Data = e['catagoryProducts'];
                         return Container(
-                          height: 450,
+                          height: 555,
                           child: Align(
                             alignment: Alignment.topLeft,
                             child: Column(
@@ -111,13 +112,13 @@ class _MyShopState extends State<MyShop> {
                                   child: Align(
                                     alignment: Alignment.topLeft,
                                     child: Container(
-                                      margin: const EdgeInsets.fromLTRB(
-                                          5, 10, 0, 0),
-                                      height: 50,
+                                      margin:
+                                          const EdgeInsets.fromLTRB(2, 0, 0, 0),
+                                      height: 40,
                                       child: Text(
                                         "${e['catagory']}",
                                         style: const TextStyle(
-                                          fontSize: 27,
+                                          fontSize: 26,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
@@ -125,7 +126,7 @@ class _MyShopState extends State<MyShop> {
                                   ),
                                 ),
                                 Expanded(
-                                  flex: 7,
+                                  flex: 9,
                                   child: Align(
                                     alignment: Alignment.topLeft,
                                     child: SingleChildScrollView(
@@ -138,7 +139,6 @@ class _MyShopState extends State<MyShop> {
                                             (e) {
                                               return Container(
                                                 margin: const EdgeInsets.only(
-                                                  top: 5,
                                                   right: 30,
                                                   bottom: 50,
                                                 ),
@@ -146,18 +146,14 @@ class _MyShopState extends State<MyShop> {
                                                   color: Colors.white,
                                                   borderRadius:
                                                       BorderRadius.circular(20),
-                                                  border: Border.all(
-                                                    width: 0.5,
-                                                    color: Colors.grey,
-                                                  ),
                                                   boxShadow: const <BoxShadow>[
                                                     BoxShadow(
                                                       color: Colors.grey,
-                                                      offset: Offset(0, 4),
+                                                      offset: Offset(0, 5),
                                                     ),
                                                   ],
                                                 ),
-                                                width: 230,
+                                                width: 220,
                                                 child: Column(
                                                   children: [
                                                     Expanded(
@@ -172,6 +168,12 @@ class _MyShopState extends State<MyShop> {
                                                             topRight:
                                                                 Radius.circular(
                                                                     15),
+                                                            bottomLeft:
+                                                                Radius.circular(
+                                                                    15),
+                                                            bottomRight:
+                                                                Radius.circular(
+                                                                    15),
                                                           ),
                                                           color: Colors.white,
                                                         ),
@@ -179,17 +181,27 @@ class _MyShopState extends State<MyShop> {
                                                           child: Column(
                                                             children: [
                                                               Expanded(
-                                                                flex: 2,
+                                                                flex: 3,
                                                                 child:
                                                                     Container(
                                                                   decoration:
-                                                                      const BoxDecoration(
-                                                                    color: Colors
-                                                                        .amber,
+                                                                      BoxDecoration(
+                                                                    image:
+                                                                        DecorationImage(
+                                                                      fit: BoxFit
+                                                                          .cover,
+                                                                      image:
+                                                                          NetworkImage(
+                                                                        "${e['thumbnail']}",
+                                                                      ),
+                                                                    ),
                                                                     borderRadius:
-                                                                        BorderRadius
+                                                                        const BorderRadius
                                                                             .vertical(
                                                                       top: Radius
+                                                                          .circular(
+                                                                              20),
+                                                                      bottom: Radius
                                                                           .circular(
                                                                               20),
                                                                     ),
@@ -199,8 +211,8 @@ class _MyShopState extends State<MyShop> {
                                                                           .topLeft,
                                                                   child:
                                                                       Container(
-                                                                    height: 40,
-                                                                    width: 70,
+                                                                    height: 30,
+                                                                    width: 60,
                                                                     decoration:
                                                                         const BoxDecoration(
                                                                       color: Colors
@@ -211,14 +223,14 @@ class _MyShopState extends State<MyShop> {
                                                                         topLeft:
                                                                             Radius.circular(20),
                                                                         bottomRight:
-                                                                            Radius.circular(14),
+                                                                            Radius.circular(20),
                                                                       ),
                                                                     ),
                                                                     alignment:
                                                                         Alignment
                                                                             .center,
                                                                     child: Text(
-                                                                      "${e['disscount']} %",
+                                                                      "${e['disscount']}%",
                                                                       style:
                                                                           const TextStyle(
                                                                         color: Colors
@@ -238,7 +250,7 @@ class _MyShopState extends State<MyShop> {
                                                                     Container(
                                                                   padding:
                                                                       const EdgeInsets
-                                                                          .all(8),
+                                                                          .all(10),
                                                                   alignment:
                                                                       Alignment
                                                                           .centerLeft,
@@ -265,20 +277,41 @@ class _MyShopState extends State<MyShop> {
                                                                         style:
                                                                             const TextStyle(
                                                                           fontSize:
-                                                                              16,
+                                                                              20,
                                                                           fontWeight:
                                                                               FontWeight.bold,
                                                                         ),
                                                                       ),
-                                                                      Text(
-                                                                        "${e['rate']}",
-                                                                        style:
-                                                                            const TextStyle(
-                                                                          fontSize:
-                                                                              16,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
+                                                                      RatingBar
+                                                                          .builder(
+                                                                        itemSize:
+                                                                            18,
+                                                                        initialRating:
+                                                                            double.parse("${e['rating']}"),
+                                                                        minRating:
+                                                                            1,
+                                                                        direction:
+                                                                            Axis.horizontal,
+                                                                        allowHalfRating:
+                                                                            true,
+                                                                        itemCount:
+                                                                            5,
+                                                                        itemPadding:
+                                                                            const EdgeInsets.symmetric(horizontal: 2.0),
+                                                                        itemBuilder:
+                                                                            (context, i) =>
+                                                                                const Icon(
+                                                                          Icons
+                                                                              .star,
+                                                                          color:
+                                                                              Colors.amber,
                                                                         ),
+                                                                        onRatingUpdate:
+                                                                            (rating) {},
+                                                                        ignoreGestures:
+                                                                            true,
+                                                                        glow:
+                                                                            false,
                                                                       ),
                                                                     ],
                                                                   ),

@@ -23,6 +23,10 @@ class _MyShopState extends State<MyShop> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
+        leading: const Icon(
+          Icons.search,
+          color: Colors.black,
+        ),
         actions: [
           IconButton(
             onPressed: () {},
@@ -107,7 +111,8 @@ class _MyShopState extends State<MyShop> {
                                   child: Align(
                                     alignment: Alignment.topLeft,
                                     child: Container(
-                                      margin: EdgeInsets.fromLTRB(5, 10, 0, 0),
+                                      margin: const EdgeInsets.fromLTRB(
+                                          5, 10, 0, 0),
                                       height: 50,
                                       child: Text(
                                         "${e['catagory']}",
@@ -133,8 +138,9 @@ class _MyShopState extends State<MyShop> {
                                             (e) {
                                               return Container(
                                                 margin: const EdgeInsets.only(
+                                                  top: 5,
                                                   right: 30,
-                                                  bottom: 30,
+                                                  bottom: 50,
                                                 ),
                                                 decoration: BoxDecoration(
                                                   color: Colors.white,
@@ -147,7 +153,7 @@ class _MyShopState extends State<MyShop> {
                                                   boxShadow: const <BoxShadow>[
                                                     BoxShadow(
                                                       color: Colors.grey,
-                                                      offset: Offset(0, 3),
+                                                      offset: Offset(0, 4),
                                                     ),
                                                   ],
                                                 ),
@@ -173,31 +179,26 @@ class _MyShopState extends State<MyShop> {
                                                           child: Column(
                                                             children: [
                                                               Expanded(
-                                                                child: Align(
+                                                                flex: 2,
+                                                                child:
+                                                                    Container(
+                                                                  decoration:
+                                                                      const BoxDecoration(
+                                                                    color: Colors
+                                                                        .amber,
+                                                                    borderRadius:
+                                                                        BorderRadius
+                                                                            .vertical(
+                                                                      top: Radius
+                                                                          .circular(
+                                                                              20),
+                                                                    ),
+                                                                  ),
                                                                   alignment:
                                                                       Alignment
                                                                           .topLeft,
                                                                   child:
                                                                       Container(
-                                                                    child:
-                                                                        Align(
-                                                                      alignment:
-                                                                          Alignment
-                                                                              .center,
-                                                                      child:
-                                                                          Text(
-                                                                        "${e['disscount']} %",
-                                                                        style:
-                                                                            const TextStyle(
-                                                                          color:
-                                                                              Colors.white,
-                                                                          fontSize:
-                                                                              18,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                        ),
-                                                                      ),
-                                                                    ),
                                                                     height: 40,
                                                                     width: 70,
                                                                     decoration:
@@ -213,26 +214,68 @@ class _MyShopState extends State<MyShop> {
                                                                             Radius.circular(14),
                                                                       ),
                                                                     ),
+                                                                    alignment:
+                                                                        Alignment
+                                                                            .center,
+                                                                    child: Text(
+                                                                      "${e['disscount']} %",
+                                                                      style:
+                                                                          const TextStyle(
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontSize:
+                                                                            18,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                      ),
+                                                                    ),
                                                                   ),
                                                                 ),
-                                                                flex: 1,
                                                               ),
                                                               Expanded(
-                                                                child: Align(
+                                                                flex: 1,
+                                                                child:
+                                                                    Container(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                          .all(8),
                                                                   alignment:
                                                                       Alignment
-                                                                          .center,
+                                                                          .centerLeft,
                                                                   child: Column(
                                                                     mainAxisAlignment:
                                                                         MainAxisAlignment
-                                                                            .center,
+                                                                            .spaceBetween,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
                                                                     children: [
                                                                       Text(
-                                                                        "${e['id']}",
+                                                                        "${e['name']}",
                                                                         style:
                                                                             const TextStyle(
                                                                           fontSize:
-                                                                              40,
+                                                                              14,
+                                                                          fontWeight:
+                                                                              FontWeight.w400,
+                                                                        ),
+                                                                      ),
+                                                                      Text(
+                                                                        "₹ ${e['price']}",
+                                                                        style:
+                                                                            const TextStyle(
+                                                                          fontSize:
+                                                                              16,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                        ),
+                                                                      ),
+                                                                      Text(
+                                                                        "${e['rate']}",
+                                                                        style:
+                                                                            const TextStyle(
+                                                                          fontSize:
+                                                                              16,
                                                                           fontWeight:
                                                                               FontWeight.bold,
                                                                         ),
@@ -240,78 +283,11 @@ class _MyShopState extends State<MyShop> {
                                                                     ],
                                                                   ),
                                                                 ),
-                                                                flex: 4,
                                                               ),
                                                             ],
                                                           ),
                                                         ),
                                                       ),
-                                                      flex: 6,
-                                                    ),
-                                                    Expanded(
-                                                      child: Container(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .all(8),
-                                                        decoration:
-                                                            const BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius.only(
-                                                            bottomLeft:
-                                                                Radius.circular(
-                                                                    15),
-                                                            bottomRight:
-                                                                Radius.circular(
-                                                                    15),
-                                                          ),
-                                                          color: Colors.white,
-                                                        ),
-                                                        child: Align(
-                                                          alignment: Alignment
-                                                              .centerLeft,
-                                                          child: Column(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceBetween,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Text(
-                                                                "${e['name']}",
-                                                                style:
-                                                                    const TextStyle(
-                                                                  fontSize: 16,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                ),
-                                                              ),
-                                                              Text(
-                                                                "₹ ${e['price']}",
-                                                                style:
-                                                                    const TextStyle(
-                                                                  fontSize: 18,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                ),
-                                                              ),
-                                                              Text(
-                                                                "${e['rating']}",
-                                                                style:
-                                                                    const TextStyle(
-                                                                  fontSize: 16,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      flex: 3,
                                                     ),
                                                   ],
                                                 ),

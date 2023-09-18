@@ -501,22 +501,22 @@ List<Map<String, dynamic>> allProducts = [
       },
       {
         'id': 'b-5',
-        'name': ' Formal Check Slim Fit Blazer',
+        'name': ' Sky Slim Fit Blazer',
         'price': 3989.00,
         'rating': 2.6,
         'disscount': 30,
         'thumbnail':
-            'https://imagescdn.pantaloons.com/img/app/product/8/898252-10975428.jpg?q=75&auto=format&w=250&h=400?q=75&auto=format&w=250&h=400',
+            'https://www.zegna.com/bin/productImage.549532A5.1DJSS0..A.R1.jpeg',
         'brandName': 'VAN HEUSEN',
         'stock': 99,
         'cata': 'Blazer',
         'discription':
             'For indisputable elegance wear this Multi-coloured Check blazer from Van Heusen by Van Heusen.',
         'img': [
-          'https://imagescdn.pantaloons.com/img/app/product/8/898252-10975429.jpg?q=75&auto=format&w=250&h=400',
-          'https://imagescdn.pantaloons.com/img/app/product/8/898252-10975430.jpg?q=75&auto=format&w=250&h=400',
-          'https://imagescdn.pantaloons.com/img/app/product/8/898252-10975431.jpg?q=75&auto=format&w=250&h=400',
-          'https://imagescdn.pantaloons.com/img/app/product/8/898252-10975428.jpg?q=75&auto=format&w=250&h=400?q=75&auto=format&w=250&h=400',
+          'https://www.zegna.com/bin/productImage.549532A5.1DJSS0..E.R2.jpeg',
+          'https://www.zegna.com/bin/productImage.549532A5.1DJSS0..R.R1.jpeg',
+          'https://www.zegna.com/bin/productImage.549532A5.1DJSS0..D.R1.jpeg',
+          'https://www.zegna.com/bin/productImage.549532A5.1DJSS0..A.R1.jpeg',
         ],
       },
     ],
@@ -627,3 +627,17 @@ List<Map<String, dynamic>> allProducts = [
     ],
   },
 ];
+List<Map<String, dynamic>> cartProduct = [];
+
+buyProductPrice() {
+  double sum = 0;
+  cartProduct.forEach((e) {
+    sum = sum + e['price'];
+  });
+  return sum;
+}
+
+lengthCart() {
+  num cartLength = cartProduct.length;
+  return cartLength;
+}
